@@ -61,6 +61,7 @@ namespace Quest
             Console.WriteLine(theAdventurer.GetDescription());
             Console.WriteLine();
 
+           
 
             // A list of challenges for the Adventurer to complete
             // Note we can use the List class here because have the line "using System.Collections.Generic;" at the top of the file.
@@ -93,6 +94,9 @@ namespace Quest
             {
                 Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
             }
+
+             Prize questPrize = new Prize("Congrats! you win a prize ");
+             questPrize.ShowPrize(theAdventurer);
 
                 Console.WriteLine("Do you want to repeat quest? (yes/no): ");
                 string repeat = Console.ReadLine();
