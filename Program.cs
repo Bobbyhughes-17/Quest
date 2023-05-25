@@ -15,8 +15,8 @@ namespace Quest
             //   a correct answer
             //   a number of awesome points to gain or lose depending on the success of the challenge
 
-            bool repeatQuest = true;
 
+            bool repeatQuest = true;
             while (repeatQuest)
             {
             Challenge twoPlusTwo = new Challenge("2 + 2?", 4, 10);
@@ -37,6 +37,30 @@ namespace Quest
 ",
                 4, 20
             );
+
+            Challenge favCity = new Challenge(@"What is my fav city?
+    1) St. Louis
+    2) Huntington
+    3) The one your mom lives in
+    4) San Diego
+",
+                3, 20);
+                Challenge favAnimal = new Challenge(@"What is my fav animal?
+    1) panda
+    2) squirrel
+    3) pig
+    4) spider
+",
+                1, 25);
+                Challenge mathProb = new Challenge("2 + 2 - 6 * 5?", 69, 10);
+
+                      Challenge favSport = new Challenge(@"What is my fav sport?
+    1) tennis
+    2) volleyball
+    3) golf
+    4) disc golf
+",
+                1, 25);
 
             // "Awesomeness" is like our Adventurer's current "score"
             // A higher Awesomeness is better
@@ -65,17 +89,23 @@ namespace Quest
 
             // A list of challenges for the Adventurer to complete
             // Note we can use the List class here because have the line "using System.Collections.Generic;" at the top of the file.
-            List<Challenge> challenges = new List<Challenge>()
+            List<Challenge> allChallenges = new List<Challenge>()
             {
                 twoPlusTwo,
                 theAnswer,
                 whatSecond,
                 guessRandom,
-                favoriteBeatle
+                favoriteBeatle,
+                favCity,
+                favAnimal,
+                mathProb,
+                favSport
             };
 
+            List<Challenge> selectedChallenges = SelectRandomChallenges(allChallenges, 5);
+
             // Loop through all the challenges and subject the Adventurer to them
-            foreach (Challenge challenge in challenges)
+            foreach (Challenge challenge in selectedChallenges)
             {
                 challenge.RunChallenge(theAdventurer);
             }
@@ -109,6 +139,21 @@ namespace Quest
                 Console.WriteLine();
 
             }
+        }
+            static List<Challenge> SelectRandomChallenges(List<Challenge> allChallenges, int numChallenges)
+        {
+            List<Challenge> selectedChallenges = new List<Challenge>();
+            Random random = new Random();
+
+            while (selectedChallenges.Count < numChallenges && allChallenges.Count > 0)
+        {
+            int randomIndex = random.Next(allChallenges.Count);
+            Challenge selectedChallenge = allChallenges[randomIndex];
+            selectedChallenges.Add(selectedChallenge);
+            allChallenges.RemoveAt(randomIndex);
+        }
+
+            return selectedChallenges;
         }
     }
 }
