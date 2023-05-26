@@ -7,6 +7,11 @@ namespace Quest
 {
     class Program
     {
+        public static int challengeSuccess = 0;
+        public static void increaseSuccessCount()
+        {
+            challengeSuccess++;
+        }
         static void Main(string[] args)
         {
             // Create a few challenges for our Adventurer's quest
@@ -17,6 +22,9 @@ namespace Quest
 
 
             bool repeatQuest = true;
+            
+
+
             while (repeatQuest)
             {
             Challenge twoPlusTwo = new Challenge("2 + 2?", 4, 10);
@@ -134,6 +142,10 @@ namespace Quest
                 if (repeat.ToLower() != "yes")
                 {
                     repeatQuest = false;
+                     challengeSuccess = (challengeSuccess * 10);
+                theAdventurer.Awesomeness += challengeSuccess;
+                challengeSuccess = 0;
+                Console.WriteLine($"Awesomeness Level: {theAdventurer.Awesomeness}");
                 }
 
                 Console.WriteLine();

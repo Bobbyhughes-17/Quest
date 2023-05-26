@@ -7,7 +7,6 @@ namespace Quest
         // The only place the Name can be set is in the Adventurer constructor
         // Note: the constructor is defined below.
         public string Name { get; }
-
         // This is a mutable property it has a "get" and a "set"
         //  So it can be read and changed by any code in the application
         public int Awesomeness { get; set; }
@@ -20,6 +19,7 @@ namespace Quest
             Awesomeness = 50;
             ColorfulRobe = robe;
             Hat = hat;
+            
         }
 
 
@@ -51,7 +51,7 @@ namespace Quest
 
         public string GetDescription()
         {
-            return $"{Name} is wearing a robe that is {ColorfulRobe.Length} inches and colors {string.Join(", ", ColorfulRobe.Colors)} with a {Hat.ShininessDescription} hat on the dome";
+            return $"{Name} is wearing a robe that is {ColorfulRobe.Length} inches and colors {string.Join(", ", ColorfulRobe.Colors)} with a {Hat.ShininessDescription} hat on the dome.";
         }
     }
 }
